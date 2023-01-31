@@ -63,7 +63,6 @@ app.post('/login',async (req,res)=>{
     if(error) return res.status(400).send(error.details[0].message)
 
     const dataemail = req.body.email
-    console.log(dataemail);
     const data = await user.findOne({email:dataemail})
     if(!data) return res.status(400).send("Account Doesn't Exist")
 
