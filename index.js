@@ -52,7 +52,7 @@ app.post('/register',async (req,res)=>{
 
     try {
         await post.save()
-        app.set('email',req.body.email)
+        // app.set('email',req.body.email)
         user_email = req.body.email
         res.redirect(`/tasks/${user_email}`)
     } catch (error) {
@@ -118,7 +118,7 @@ app.get('/complete-task/:id',async (req,res)=>{
     await task.findOneAndUpdate({_id:id},{$set : {status:'completed'}},{new:true})
     // const email = app.get('email')
     const tasks = await task.find({email:user_email}).sort({status:-1})
-    console.log(tasks);
+    // console.log(tasks);
     // app.set('email',email)
     res.render('main',{details:tasks})
 })
